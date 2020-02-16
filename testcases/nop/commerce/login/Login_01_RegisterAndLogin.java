@@ -22,14 +22,13 @@ public class Login_01_RegisterAndLogin {
 
 	@BeforeTest
 	public void beforeTest() {
-//		System.setProperty("webdriver.gecko.driver", ".\\libraries\\geckodriver.exe");
+//		System.setProperty("webdriver.gecko.driver", ".\\browserDrivers\\geckodriver.exe");
 //		driver = new FirefoxDriver();
 		
-		System.setProperty("webdriver.chrome.driver", ".\\libraries\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", ".\\browserDrivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		
-
 		email = "corona" + randomNumber() + "@gmail.com";
 		password = "coronavirus";
 	}

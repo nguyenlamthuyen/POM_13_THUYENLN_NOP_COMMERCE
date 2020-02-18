@@ -9,17 +9,32 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AbstractPage {
 
-	public WebDriver driver;
-	long longTimeout = 30;
-	By byXpath;
-	Actions action;
-	WebElement element;
-	WebDriverWait waitExplicit;
-	JavascriptExecutor javascriptExecutor;
+	private WebDriver driver;
+	private long longTimeout = 30;
+	private By byXpath;
+	private Actions action;
+	private WebElement element;
+	private WebDriverWait waitExplicit;
+	private Select select;
+	
+//	public AbstractPage() {
+//		
+//	}
+	
+	public AbstractPage(WebDriver localDriver) {
+		System.out.println("Driver at testcase = " + localDriver);
+		driver = localDriver;
+		System.out.println("Driver at abstract = " + driver);
+	}
+	
+//	public AbstractPage(WebDriverWait waitExplicit) {
+//		
+//	}
 
 	public void openUrl(String urlValue) {
 		driver.get(urlValue);
@@ -61,7 +76,6 @@ public class AbstractPage {
 
 	public void sendKeyToAlert(String value) {
 		driver.switchTo().alert().sendKeys(value);
-		;
 	}
 
 	public WebElement findElementByXpath(String locator) {
@@ -82,6 +96,16 @@ public class AbstractPage {
 
 	public void sendKeyToElement(String locator, String value) {
 		findElementByXpath(locator).sendKeys(value);
+	}
+	
+	public void selectItemInDropdown(String locator, String valueItem) {
+		element = findElementByXpath(locator);
+		select = new Select(element);
+		select.selectByVisibleText(valueItem);
+	}
+	
+	public String getTextElement(String locator) {
+		return findElementByXpath(locator).getText();
 	}
 
 	public int countElementNumber(String locator) {

@@ -15,19 +15,28 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 
-public class Login_01_RegisterAndLogin {
+public class Login_01_RegisterAndLogin_StepByStep {
 	private WebDriver driver;
 	private Select select;
 	private String email, password;
 
 	@BeforeTest
 	public void beforeTest() {
-//		System.setProperty("webdriver.gecko.driver", ".\\browserDrivers\\geckodriver.exe");
-//		driver = new FirefoxDriver();
+		String osName = System.getProperty("os.name");
+		System.out.println(osName.toLowerCase());
+
+		if(osName.toLowerCase().contains("windows")) {
+			System.setProperty("webdriver.gecko.driver", ".\\browserDrivers\\geckodriver.exe");
+		} else if(osName.toLowerCase().contains("mac")) {
+			System.setProperty("webdriver.gecko.driver", ".\\browserDrivers\\geckodriver");
+		}
 		
-		System.setProperty("webdriver.chrome.driver", ".\\browserDrivers\\chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		System.setProperty("webdriver.gecko.driver", ".\\browserDrivers\\geckodriver.exe");
+		driver = new FirefoxDriver();
+		
+//		System.setProperty("webdriver.chrome.driver", ".\\browserDrivers\\chromedriver.exe");
+//		driver = new ChromeDriver();
+//		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		
 		email = "corona" + randomNumber() + "@gmail.com";
 		password = "coronavirus";
@@ -81,9 +90,7 @@ public class Login_01_RegisterAndLogin {
 		Assert.assertEquals(resultText, "Your registration completed");
 
 		// Logout to System
-		driver.findElement(By.cssSelector(".ico-logout")).click();
-		
-	
+		driver.findElement(By.cssSelector(".ico-logout")).click();	
 	}
 
 	@Test

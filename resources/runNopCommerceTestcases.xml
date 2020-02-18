@@ -3,7 +3,9 @@
 
   <test name="Run on CHROME">
     <classes>
-      <class name="nop.commerce.login.Login_01_RegisterAndLogin"/>
+<!--       <class name="nop.commerce.login.Login_01_RegisterAndLogin_StepByStep"/> -->
+<!--       <class name="nop.commerce.login.Login_02_RegisterAndLogin_AbstractPage_01_Declare"/> -->
+            <class name="nop.commerce.login.Login_02_RegisterAndLogin_AbstractPage_02_Extend"/>
     </classes>
   </test> 
   

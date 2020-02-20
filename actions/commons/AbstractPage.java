@@ -143,10 +143,4 @@ public class AbstractPage {
 		waitExplicit.until(ExpectedConditions.elementToBeClickable(byXpath));
 	}
 
-//	public boolean verifyTextInInnerText(WebDriver driver, String textExpected) {
-//		javascriptExecutor = (JavascriptExecutor) driver;
-//		String textActual = (String)javascriptExecutor.executeScript("return
-//				document.documentElement.innerText.match('"+textExpected+"')[0]"); 
-//				return textActual.equals(textExpected);		
-//	}
 }

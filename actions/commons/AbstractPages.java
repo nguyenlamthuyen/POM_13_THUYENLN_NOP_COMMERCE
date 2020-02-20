@@ -79,15 +79,21 @@ public class AbstractPages {
 	}
 
 	public void sendKeyToElement(WebDriver driver, String locator, String value) {
+		findElementByXpath(driver, locator).clear();
 		findElementByXpath(driver, locator).sendKeys(value);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	public void selectItemInDropdown(WebDriver driver, String locator, String valueItem) {
 		element = findElementByXpath(driver, locator);
 		select = new Select(element);
 		select.selectByVisibleText(valueItem);
 	}
-	
+
 	public String getTextElement(WebDriver driver, String locator) {
 		return findElementByXpath(driver, locator).getText();
 	}

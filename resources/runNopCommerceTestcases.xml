@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Nop Commerce" parallel="false">
 
-  <test name="Run on CHROME">
-    <classes>
-<!--       <class name="nop.commerce.login.Login_01_RegisterAndLogin_StepByStep"/> -->
-<!--       <class name="nop.commerce.login.Login_02_RegisterAndLogin_AbstractPage_01_Declare"/> -->
-            <class name="nop.commerce.login.Login_02_RegisterAndLogin_AbstractPage_02_Extend"/>
-    </classes>
-  </test> 
-  
+	<test name="Run on CHROME">
+		<classes>
+			<!-- <class name="nop.commerce.login.Login_01_RegisterAndLogin_StepByStep"/> -->
+			<!-- <class name="nop.commerce.login.Login_02_RegisterAndLogin_AbstractPage_01_Declare"/> -->
+			<!-- <class name="nop.commerce.login.Login_02_RegisterAndLogin_AbstractPage_02_Extend"/> -->
+			<class name="nop.commerce.login.Login_03_RegisterAndLogin_Page_Object" />
+		</classes>
+	</test>
+
 </suite>

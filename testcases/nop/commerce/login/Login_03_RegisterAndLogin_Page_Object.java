@@ -4,6 +4,9 @@ import org.testng.annotations.Test;
 
 import commons.AbstractPage;
 import commons.AbstractPages;
+import pageObjects.HomePageObject;
+import pageObjects.LoginPageObject;
+import pageObjects.RegisterPageObject;
 
 import org.testng.annotations.BeforeTest;
 
@@ -21,10 +24,11 @@ import org.testng.annotations.AfterTest;
 
 public class Login_03_RegisterAndLogin_Page_Object extends AbstractPages {
 	private WebDriver driver;
-	private Select select;
-	private String email, password;
-	// Declare an instance of Abstract Page
-	private WebDriverWait wait;
+	private String email, password, registerSuccessMsg;
+
+	private HomePageObject homePage;
+	private LoginPageObject loginPage;
+	private RegisterPageObject registerPage;
 
 	@BeforeTest
 	public void beforeTest() {
@@ -32,6 +36,8 @@ public class Login_03_RegisterAndLogin_Page_Object extends AbstractPages {
 		driver = new ChromeDriver();
 
 		openUrl(driver, "https://demo.nopcommerce.com/");
+		
+		homePage = new HomePageObject(driver);
 
 		email = "corona" + randomNumber() + "@gmail.com";
 		password = "coronavirus";
@@ -41,66 +47,67 @@ public class Login_03_RegisterAndLogin_Page_Object extends AbstractPages {
 	public void TC_01_RegisterToSystem() {
 
 		// Click to Register link
-		clickToElement(driver, "//a[@class='ico-register']");
-
-		// Select item in Day
-		selectItemInDropdown(driver, "//select[@name='DateOfBirthDay']", "1");
-
-		// Select item in Month
-		selectItemInDropdown(driver, "//select[@name='DateOfBirthMonth']", "February");
-
-		// Select item in Year
-		selectItemInDropdown(driver, "//select[@name='DateOfBirthYear']", "1986");
-
-		// Input to Company textbox
-		driver.findElement(By.cssSelector("#Company")).sendKeys("Corona Virus");
-
-		// Click male radio button
-		clickToElement(driver, "//input[@id='gender-male']");
+		registerPage = homePage.clickToRegisterLink();
+		
+		// Input to Lastname textbox
+		registerPage.inputToLastNameTextbox("Foster");
 		
 		// Input to Firstname textbox
-		sendKeyToElement(driver, "//input[@id='FirstName']", "Corona307");
+		registerPage.inputToFirstNameTextbox("Sarah");
+		
+		// Select item in Day
+		registerPage.selectDayDropdown("8");
 
-		// Input to Lastname textbox
-		sendKeyToElement(driver, "//input[@id='LastName']", "Virus");
+		// Select item in Month
+		registerPage.selectMonthDropdown("August");
+
+		// Select item in Year
+		registerPage.selectYearDropdown("1988");
+
+		// Input to Company textbox
+		registerPage.inputToCompanyTextbox("Sarah Channel");
+
+		// Click male radio button
+		registerPage.clickToMaleRadio();
 
 		// Input to Email textbox
-		sendKeyToElement(driver, "//input[@id='Email']", email);
+		registerPage.inputToEmailTextbox(email);
 
 		// Input to Password textbox
-		sendKeyToElement(driver, "//input[@id='Password']", password);
+		registerPage.inputToPasswordTextbox(password);
 
 		// Input to ConfirmPassword textbox
-		sendKeyToElement(driver, "//input[@id='ConfirmPassword']", password);
+		registerPage.inputToConfirmPasswordTextbox(password);
 
 		// Click to Register button
-		clickToElement(driver, "//input[@id='register-button']");
+		registerPage.clickToRegisterButton();
 
 		// Verify registered success
-		String resultText = getTextElement(driver, "//div[@class='result']");
-		Assert.assertEquals(resultText, "Your registration completed");
+		registerSuccessMsg = registerPage.getRegisterSuccessMessage();
+		Assert.assertEquals(registerSuccessMsg, "Your registration completed");
 
 		// Logout to System
-		clickToElement(driver, "//a[@class='ico-logout']");
+		homePage = registerPage.clickToLogoutLink();
+
 	}
 
 	@Test
 	public void TC_02_LoginToSystem() {
-
 		// Click Login link
-		clickToElement(driver, "//a[@class='ico-login']");
-
-		// Input to Email textbox
-		sendKeyToElement(driver, "//input[@id='Email']", email);
+		loginPage = homePage.clickToLoginLink();
 
 		// Input to Password textbox
-		sendKeyToElement(driver, "//input[@id='Password']", password);
+		loginPage.inputToPasswordTextbox(password);
+		
+		// Input to Email textbox
+		loginPage.inputToEmailTextbox(email);
 
 		// Click to Login button
-		clickToElement(driver, "//input[@class='button-1 login-button']");
-
+		homePage = loginPage.clickToLoginButton();
+		
 		// Verify My Account link displayed
-		Assert.assertTrue(isElementDisplayed(driver, "//a[@class='ico-account']"));
+		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
+
 	}
 
 	@AfterTest

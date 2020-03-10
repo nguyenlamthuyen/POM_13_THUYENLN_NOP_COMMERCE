@@ -4,9 +4,9 @@ import org.testng.annotations.Test;
 
 import commons.AbstractPage;
 import commons.AbstractPages;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.nopCommerce.HomePageObject;
+import pageObjects.nopCommerce.LoginPageObject;
+import pageObjects.nopCommerce.RegisterPageObject;
 
 import org.testng.annotations.BeforeTest;
 
@@ -22,7 +22,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 
-public class Login_03_RegisterAndLogin_Page_Object extends AbstractPages {
+public class Login_03_RegisterAndLogin_Page_Object {
 	private WebDriver driver;
 	private String email, password, registerSuccessMsg;
 
@@ -35,7 +35,7 @@ public class Login_03_RegisterAndLogin_Page_Object extends AbstractPages {
 		System.setProperty("webdriver.chrome.driver", ".\\browserDrivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 
-		openUrl(driver, "https://demo.nopcommerce.com/");
+		driver.get("https://demo.nopcommerce.com/");
 		
 		homePage = new HomePageObject(driver);
 
@@ -48,15 +48,15 @@ public class Login_03_RegisterAndLogin_Page_Object extends AbstractPages {
 
 		// Click to Register link
 		registerPage = homePage.clickToRegisterLink();
-		
-		// Input to Lastname textbox
-		registerPage.inputToLastNameTextbox("Foster");
+	
+		// Select item in Day
+		registerPage.selectDayDropdown("8");
 		
 		// Input to Firstname textbox
 		registerPage.inputToFirstNameTextbox("Sarah");
 		
-		// Select item in Day
-		registerPage.selectDayDropdown("8");
+		// Input to Lastname textbox
+		registerPage.inputToLastNameTextbox("Foster");
 
 		// Select item in Month
 		registerPage.selectMonthDropdown("August");

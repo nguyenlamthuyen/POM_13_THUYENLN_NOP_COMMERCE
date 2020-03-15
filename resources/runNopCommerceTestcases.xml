@@ -6,7 +6,8 @@
 			<!-- <class name="nop.commerce.login.Login_01_RegisterAndLogin_StepByStep"/> -->
 			<!-- <class name="nop.commerce.login.Login_02_RegisterAndLogin_AbstractPage_01_Declare"/> -->
 			<!-- <class name="nop.commerce.login.Login_02_RegisterAndLogin_AbstractPage_02_Extend"/> -->
-			<class name="nop.commerce.login.Login_03_RegisterAndLogin_Page_Object" />
+			<!-- <class name="nop.commerce.login.Login_03_RegisterAndLogin_Page_Object"/> -->
+			<class name="nop.commerce.login.Login_04_RegisterAndLogin_Page_Factory" />
 		</classes>
 	</test>
 

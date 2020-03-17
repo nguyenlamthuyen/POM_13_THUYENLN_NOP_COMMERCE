@@ -10,8 +10,7 @@ public class ChromeDriverManager extends DriverManager{
 		// Add service and new driver
 		System.setProperty("webdriver.chrome.driver", ".\\browserDrivers\\chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("headless");
-		options.addArguments("window-size=1920x1080");
+		options.addArguments("--incognito");
 		driver = new ChromeDriver(options);
 		
 	}

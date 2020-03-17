@@ -5,7 +5,7 @@
 		<parameter name="browser" value="chrome" />
 	<!-- 	<parameter name="ip" value="192.168.1.1" /> -->
 		<classes>
-			<class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" />
+			<class name="nop.commerce.login.Login_07_RegisterAndLogin_Factory_Pattern" />
 		</classes>
 	</test>
 
@@ -13,14 +13,14 @@
 		<parameter name="browser" value="firefox" />
 		<!-- 	<parameter name="ip" value="192.168.1.2" /> -->
 		<classes>
-			<class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" />
+			<class name="nop.commerce.login.Login_07_RegisterAndLogin_Factory_Pattern" />
 		</classes>
 	</test>
 
 	<test name="Run on CHROME HEADLESS">
 		<parameter name="browser" value="headLess_chrome" />
 		<classes>
-			<class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" />
+			<class name="nop.commerce.login.Login_07_RegisterAndLogin_Factory_Pattern" />
 		</classes>
 	</test>
 

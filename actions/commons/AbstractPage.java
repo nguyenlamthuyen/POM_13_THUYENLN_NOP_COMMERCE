@@ -32,6 +32,12 @@ public class AbstractPage {
 		System.out.println("Driver at abstract = " + driver);
 	}
 	
+	public AbstractPage(WebDriver localDriver, WebDriverWait waitExplicit) {
+		System.out.println("Driver at testcase = " + localDriver);
+		driver = localDriver;
+		System.out.println("Driver at abstract = " + driver);
+	}
+	
 //	public AbstractPage(WebDriverWait waitExplicit) {
 //		
 //	}
@@ -90,7 +96,18 @@ public class AbstractPage {
 		return byXpath = By.xpath(locator);
 	}
 
+	// 1 parameter
 	public void clickToElement(String locator) {
+		findElementByXpath(locator).click();
+	}
+	
+	// 1 paramter
+	public void clickToElement(int number) {
+
+	}
+	
+	// 2 parameters
+	public void clickToElement(String locator, String value) {
 		findElementByXpath(locator).click();
 	}
 

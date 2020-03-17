@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Nop Commerce" parallel="false" thread-count="3">
+
+	<test name="Run on CHROME">
+		<parameter name="browser" value="chrome" />
+	<!-- 	<parameter name="ip" value="192.168.1.1" /> -->
+		<classes>
+			<class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" />
+		</classes>
+	</test>
+
+	<test name="Run on FIREFOX">
+		<parameter name="browser" value="firefox" />
+		<!-- 	<parameter name="ip" value="192.168.1.2" /> -->
+		<classes>
+			<class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" />
+		</classes>
+	</test>
+
+	<test name="Run on CHROME HEADLESS">
+		<parameter name="browser" value="headLess_chrome" />
+		<classes>
+			<class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" />
+		</classes>
+	</test>
+
+</suite>

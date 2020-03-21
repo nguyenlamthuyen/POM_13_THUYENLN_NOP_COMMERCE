@@ -13,43 +13,43 @@ public class LoginPageObject extends AbstractPages {
 	}
 
 	public void inputToEmailTextbox(String email) {
-		waitToElementDisplayed(driver, LoginPageUI.EMAIL_TEXTBOX);
+		waitToElementVisible(driver, LoginPageUI.EMAIL_TEXTBOX);
 		sendKeyToElement(driver, LoginPageUI.EMAIL_TEXTBOX, email);
 	}
 
 	public void inputPasswordTextbox(String password) {
-		waitToElementDisplayed(driver, LoginPageUI.PASSWORD_TEXTBOX);
+		waitToElementVisible(driver, LoginPageUI.PASSWORD_TEXTBOX);
 		sendKeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);
 	}
 
 	public MyDashboardPageObject clickToLoginButton() {
-		waitToElementDisplayed(driver, LoginPageUI.LOGIN_BUTTON);
+		waitToElementVisible(driver, LoginPageUI.LOGIN_BUTTON);
 		clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
 		return new MyDashboardPageObject(driver);
 	}
 
 	public boolean isEmptyEmailErrorMessageDisplayed(String errorMessage) {
-		waitToElementDisplayed(driver, String.format(LoginPageUI.EMPTY_EMAIL_ERROR_MESSAGE, errorMessage));
+		waitToElementVisible(driver, String.format(LoginPageUI.EMPTY_EMAIL_ERROR_MESSAGE, errorMessage));
 		return isElementDisplayed(driver, String.format(LoginPageUI.EMPTY_EMAIL_ERROR_MESSAGE, errorMessage));
 	}
 
 	public boolean isEmptyPasswordErrorMessageDisplayed(String errorMessage) {
-		waitToElementDisplayed(driver, String.format(LoginPageUI.EMPTY_PASSWORD_ERROR_MESSAGE, errorMessage));
+		waitToElementVisible(driver, String.format(LoginPageUI.EMPTY_PASSWORD_ERROR_MESSAGE, errorMessage));
 		return isElementDisplayed(driver, String.format(LoginPageUI.EMPTY_PASSWORD_ERROR_MESSAGE, errorMessage));
 	}
 
 	public boolean isInvalidEmailErrorMessageDisplayed(String errorMessage) {
-		waitToElementDisplayed(driver, String.format(LoginPageUI.INVALID_EMAIL_ERROR_MESSAGE, errorMessage));
+		waitToElementVisible(driver, String.format(LoginPageUI.INVALID_EMAIL_ERROR_MESSAGE, errorMessage));
 		return isElementDisplayed(driver, String.format(LoginPageUI.INVALID_EMAIL_ERROR_MESSAGE, errorMessage));
 	}
 
 	public boolean isEmailNotExistOrInvalidPasswordErrorMessageDisplayed(String errorMessage) {
-		waitToElementDisplayed(driver, String.format(LoginPageUI.NOT_EXIST_EMAIL_OR_INCORRECT_PASSWORD_ERROR_MESSAGE, errorMessage));
+		waitToElementVisible(driver, String.format(LoginPageUI.NOT_EXIST_EMAIL_OR_INCORRECT_PASSWORD_ERROR_MESSAGE, errorMessage));
 		return isElementDisplayed(driver, String.format(LoginPageUI.NOT_EXIST_EMAIL_OR_INCORRECT_PASSWORD_ERROR_MESSAGE, errorMessage));
 	}
 
 	public boolean isPasswordLessThan6CharsErrorMessageDisplayed(String errorMessage) {
-		waitToElementDisplayed(driver, String.format(LoginPageUI.PASSWORD_LESS_THAN_ERROR_MESSAGE, errorMessage));
+		waitToElementVisible(driver, String.format(LoginPageUI.PASSWORD_LESS_THAN_ERROR_MESSAGE, errorMessage));
 		return isElementDisplayed(driver, String.format(LoginPageUI.PASSWORD_LESS_THAN_ERROR_MESSAGE, errorMessage));
 	}
 }

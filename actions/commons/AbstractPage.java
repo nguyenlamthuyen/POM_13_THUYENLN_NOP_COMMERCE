@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AbstractPage {
 
 	private WebDriver driver;
-	private long longTimeout = 30;
+//	private long longTimeout = 30;
 	private By byXpath;
 	private Actions action;
 	private WebElement element;
@@ -44,7 +44,7 @@ public class AbstractPage {
 
 	public void openUrl(String urlValue) {
 		driver.get(urlValue);
-		driver.manage().timeouts().implicitlyWait(longTimeout, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
 
@@ -150,13 +150,13 @@ public class AbstractPage {
 
 	public void waitToElementDisplayed(String locator) {
 		byXpath = byXpathLocator(locator);
-		waitExplicit = new WebDriverWait(driver, longTimeout);
+		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		waitExplicit.until(ExpectedConditions.visibilityOfElementLocated(byXpath));
 	}
 
 	public void waitToElementClickable(String locator) {
 		byXpath = byXpathLocator(locator);
-		waitExplicit = new WebDriverWait(driver, longTimeout);
+		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		waitExplicit.until(ExpectedConditions.elementToBeClickable(byXpath));
 	}
 

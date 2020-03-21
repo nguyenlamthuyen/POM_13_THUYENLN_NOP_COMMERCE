@@ -49,7 +49,7 @@ public class Selenium_API{
 	public void TC_01_Get_Header_Page_Name_Url() {
 		driver.get("https://demo.nopcommerce.com/");
 
-		javascript.executeScript(arg0, arg1)
+//		javascript.executeScript(arg0, arg1)
 	}
 
 	@AfterTest

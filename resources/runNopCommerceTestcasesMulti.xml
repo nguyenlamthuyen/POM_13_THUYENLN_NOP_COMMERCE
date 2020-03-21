@@ -11,7 +11,7 @@
 	<test name="Run on FIREFOX">
 		<parameter name="browser" value="firefox" />
 		<classes>
-			<class name="nop.commerce.login.Login_08_RegisterAndLogin_Action_Chain" />
+			<class name="nop.commerce.login.Login_08_RegisterAndLogin_Dynamic_Locator" />
 		</classes>
 	</test>
 

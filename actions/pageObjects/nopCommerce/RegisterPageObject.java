@@ -34,27 +34,27 @@ public class RegisterPageObject extends AbstractPages {
 	}
 
 	public void inputToFirstNameTextbox(String firstNameValue) {
-		waitToElementDisplayed(driver, RegisterPageUI.FIRST_NAME_TEXTBOX);
+		waitToElementVisible(driver, RegisterPageUI.FIRST_NAME_TEXTBOX);
 		sendKeyToElement(driver, RegisterPageUI.FIRST_NAME_TEXTBOX, firstNameValue);
 	}
 
 	public void inputToLastNameTextbox(String lastNameValue) {
-		waitToElementDisplayed(driver, RegisterPageUI.LAST_NAME_TEXTBOX);
+		waitToElementVisible(driver, RegisterPageUI.LAST_NAME_TEXTBOX);
 		sendKeyToElement(driver, RegisterPageUI.LAST_NAME_TEXTBOX, lastNameValue);
 	}
 
 	public void inputToEmailTextbox(String emailValue) {
-		waitToElementDisplayed(driver, RegisterPageUI.EMAIL_TEXTBOX);
+		waitToElementVisible(driver, RegisterPageUI.EMAIL_TEXTBOX);
 		sendKeyToElement(driver, RegisterPageUI.EMAIL_TEXTBOX, emailValue);
 	}
 
 	public void inputToPasswordTextbox(String passwordValue) {
-		waitToElementDisplayed(driver, RegisterPageUI.PASSWORD_TEXTBOX);
+		waitToElementVisible(driver, RegisterPageUI.PASSWORD_TEXTBOX);
 		sendKeyToElement(driver, RegisterPageUI.PASSWORD_TEXTBOX, passwordValue);
 	}
 
 	public void inputToConfirmPasswordTextbox(String confirmPasswordValue) {
-		waitToElementDisplayed(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
+		waitToElementVisible(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
 		sendKeyToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPasswordValue);
 	}
 
@@ -64,7 +64,7 @@ public class RegisterPageObject extends AbstractPages {
 	}
 
 	public String getRegisterSuccessMessage() {
-		waitToElementDisplayed(driver, RegisterPageUI.REGISTER_SUCCESS_TEXT);
+		waitToElementVisible(driver, RegisterPageUI.REGISTER_SUCCESS_TEXT);
 		return getTextElement(driver, RegisterPageUI.REGISTER_SUCCESS_TEXT);
 	}
 
@@ -75,7 +75,7 @@ public class RegisterPageObject extends AbstractPages {
 	}
 
 	public void inputToCompanyTextbox(String companyValue) {
-		waitToElementDisplayed(driver, RegisterPageUI.COMPANY_TEXTBOX);
+		waitToElementVisible(driver, RegisterPageUI.COMPANY_TEXTBOX);
 		sendKeyToElement(driver, RegisterPageUI.EMAIL_TEXTBOX, companyValue);
 	}
 

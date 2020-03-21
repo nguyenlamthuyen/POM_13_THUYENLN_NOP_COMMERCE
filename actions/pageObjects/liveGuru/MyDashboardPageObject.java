@@ -14,7 +14,7 @@ public class MyDashboardPageObject extends AbstractPages {
 	}
 
 	public boolean isFullnameOrEmailTextDisplayed(String errorMessage) {
-		waitToElementDisplayed(driver, String.format(MyDashboardPageUI.EMAIL_PASSWORD_TEXT, errorMessage));
+		waitToElementVisible(driver, String.format(MyDashboardPageUI.EMAIL_PASSWORD_TEXT, errorMessage));
 		return isElementDisplayed(driver, String.format(MyDashboardPageUI.EMAIL_PASSWORD_TEXT, errorMessage));
 	}
 

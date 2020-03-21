@@ -12,7 +12,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AbstractPages {
+import pageObjects.nopCommerce.FooterMyAccountPageObject;
+import pageObjects.nopCommerce.FooterNewProductPageObject;
+import pageObjects.nopCommerce.FooterSearchPageObject;
+import pageObjects.nopCommerce.HomePageObject;
+import pageUIs.nopCommerce.AbstractPageUI;
+import pageUIs.nopCommerce.FooterMyAccountPageUI;
+import pageUIs.nopCommerce.FooterNewProductPageUI;
+import pageUIs.nopCommerce.FooterSearchPageUI;
+import pageUIs.nopCommerce.HomePageUI;
+
+public abstract class AbstractPages {
 	private long longTimeout = 30;
 	private By byXpath;
 	private Actions action;
@@ -87,6 +97,16 @@ public class AbstractPages {
 			e.printStackTrace();
 		}
 	}
+	
+	public void sleepInSecond(long timeout) {
+		try {
+			Thread.sleep(timeout * 1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+	}
 
 	public void selectItemInDropdown(WebDriver driver, String locator, String valueItem) {
 		element = findElementByXpath(driver, locator);
@@ -131,5 +151,31 @@ public class AbstractPages {
 		byXpath = byXpathLocator(locator);
 		waitExplicit = new WebDriverWait(driver, longTimeout);
 		waitExplicit.until(ExpectedConditions.elementToBeClickable(byXpath));
+	}
+
+	// Open Footer Page
+	
+	public FooterMyAccountPageObject openFooterMyAccountPage(WebDriver driver) {
+		waitToElementDisplayed(driver, AbstractPageUI.FOOTER_MY_ACCOUNT_LINK);
+		clickToElement(driver, AbstractPageUI.FOOTER_MY_ACCOUNT_LINK);
+		return PageGeneratorManager.getFooterMyAccountPage(driver);
+	}
+	
+	public FooterSearchPageObject openFooterSearchPage(WebDriver driver) {
+		waitToElementClickable(driver, AbstractPageUI.FOOTER_SEARCH_LINK);
+		clickToElement(driver, AbstractPageUI.FOOTER_SEARCH_LINK);
+		return PageGeneratorManager.getFooterSearchPage(driver);
+	}
+	
+	public HomePageObject openHomePage(WebDriver driver) {
+		waitToElementDisplayed(driver, AbstractPageUI.HOME_PAGE_LINK);
+		clickToElement(driver, AbstractPageUI.HOME_PAGE_LINK);
+		return PageGeneratorManager.getHomePage(driver);		
+	}
+	
+	public FooterNewProductPageObject openFooterNewProductPage(WebDriver driver) {
+		waitToElementClickable(driver, AbstractPageUI.FOOTER_NEW_PRODUCT_LINK);
+		clickToElement(driver, AbstractPageUI.FOOTER_NEW_PRODUCT_LINK);
+		return PageGeneratorManager.getFooterNewProductPage(driver);
 	}
 }

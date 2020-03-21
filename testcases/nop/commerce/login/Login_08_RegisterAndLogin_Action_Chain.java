@@ -6,6 +6,9 @@ import commons.AbstractPage;
 import commons.AbstractPages;
 import commons.AbstractTest;
 import commons.PageGeneratorManager;
+import pageObjects.nopCommerce.FooterMyAccountPageObject;
+import pageObjects.nopCommerce.FooterNewProductPageObject;
+import pageObjects.nopCommerce.FooterSearchPageObject;
 import pageObjects.nopCommerce.HomePageObject;
 import pageObjects.nopCommerce.LoginPageObject;
 import pageObjects.nopCommerce.RegisterPageObject;
@@ -35,7 +38,10 @@ public class Login_08_RegisterAndLogin_Action_Chain extends AbstractTest{
 	private HomePageObject homePage;
 	private LoginPageObject loginPage;
 	private RegisterPageObject registerPage;
-
+	private FooterMyAccountPageObject myAccountPage;
+	private FooterNewProductPageObject newProductPage;
+	private FooterSearchPageObject searchPage;
+	
 	@Parameters({ "browser"})
 	@BeforeTest
 	public void beforeTest(String browserName) {
@@ -48,7 +54,7 @@ public class Login_08_RegisterAndLogin_Action_Chain extends AbstractTest{
 		password = "coronavirus";
 	}
 
-	@Test
+//	@Test
 	public void TC_01_RegisterToSystem() {
 		registerPage = homePage.clickToRegisterLink();
 		registerPage.selectDayDropdown("8");
@@ -67,7 +73,7 @@ public class Login_08_RegisterAndLogin_Action_Chain extends AbstractTest{
 		homePage = registerPage.clickToLogoutLink();
 	}
 
-	@Test
+//	@Test
 	public void TC_02_LoginToSystem() {
 		loginPage = homePage.clickToLoginLink();
 		loginPage.inputToPasswordTextbox(password);
@@ -78,7 +84,25 @@ public class Login_08_RegisterAndLogin_Action_Chain extends AbstractTest{
 	
 	@Test
 	public void TC_03_ActionChain() {
+		// Home Page -> My Account (Footer) 
+		myAccountPage = homePage.openFooterMyAccountPage(driver);
+		myAccountPage.sleepInSecond(2);
 		
+		// My Account -> Search
+		searchPage = myAccountPage.openFooterSearchPage(driver);
+		searchPage.sleepInSecond(2);
+		
+		// Search -> New products
+		newProductPage = searchPage.openFooterNewProductPage(driver);
+		newProductPage.sleepInSecond(2);
+		
+		// New products -> Home page
+		homePage = newProductPage.openHomePage(driver);
+		homePage.sleepInSecond(2);
+		
+		// Home Page -> Search
+		searchPage = homePage.openFooterSearchPage(driver);
+		searchPage.sleepInSecond(2);
 	}
 
 	@AfterTest

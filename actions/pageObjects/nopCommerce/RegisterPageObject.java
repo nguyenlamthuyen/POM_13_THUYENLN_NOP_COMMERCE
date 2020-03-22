@@ -78,5 +78,21 @@ public class RegisterPageObject extends AbstractPages {
 		waitToElementVisible(driver, RegisterPageUI.COMPANY_TEXTBOX);
 		sendKeyToElement(driver, RegisterPageUI.EMAIL_TEXTBOX, companyValue);
 	}
+	
+	public boolean isFirstnameTextboxDisplayed() {
+		waitToElementVisible(driver, "//input[@id='FirstName']");
+		return isElementDisplayed(driver, "//input[@id='FirstName']");
+	}
+
+	public boolean isRequestVerifyTokenTextboxUndisplayed() {
+		waitToElementInvisible(driver, "//input[@name='__RequestVerificationToken']");
+		return isControlUndisplayed(driver, "//input[@name='__RequestVerificationToken']");
+	}
+
+	public boolean isRegisterButtonUndisplayed() {
+		waitToElementInvisible(driver, "//input[@class='button-1 register-button']");
+		return isControlUndisplayed(driver, "//input[@class='button-1 register-button']");
+
+	}
 
 }

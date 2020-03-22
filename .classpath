@@ -6,8 +6,16 @@
 	<classpathentry kind="src" path="interfaces"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="libraries/selenium-server-standalone-3.141.59.jar"/>
-	<classpathentry kind="lib" path="C:/Users/thuyennguyen/Downloads/geckodriver-v0.26.0-win64.zip"/>
 	<classpathentry kind="lib" path="C:/Users/thuyennguyen/Downloads/testng-6.10.jar"/>
+	<classpathentry kind="lib" path="libCommon/guice-3.0.jar"/>
+	<classpathentry kind="lib" path="libCommon/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="libCommon/reportng-1.1.4.jar"/>
+	<classpathentry kind="lib" path="libCommon/velocity-1.4.jar"/>
+	<classpathentry kind="lib" path="libCommon/commons-codec-1.11.jar"/>
+	<classpathentry kind="lib" path="libCommon/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="libCommon/commons-lang3-3.8.1.jar"/>
+	<classpathentry kind="lib" path="libCommon/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="libCommon/selenium-server-standalone-3.141.59.jar"/>
+	<classpathentry kind="lib" path="libCommon/commons-collections-3.2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

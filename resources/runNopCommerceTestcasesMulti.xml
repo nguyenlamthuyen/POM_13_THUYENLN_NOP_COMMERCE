@@ -1,32 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Nop Commerce" parallel="false">
 
-<!-- 	<test name="Run on CHROME">
-		<parameter name="browser" value="chrome" />
-		<classes>
-			<class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" />
-		</classes>
-	</test> -->
+	<listeners>
+		<listener class-name="commons.MethodListener" />
+	</listeners>
+
+	<!-- <test name="Run on CHROME"> <parameter name="browser" value="chrome" /> <classes> <class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" /> </classes> </test> -->
 
 	<test name="Run on FIREFOX">
 		<parameter name="browser" value="firefox" />
 		<classes>
-			<class name="nop.commerce.login.Login_09_RegisterAndLogin_Undisplayed" />
+			<class name="nop.commerce.login.Login_10_RegisterAndLogin_Assert_Verify_Log_Report" />
 		</classes>
 	</test>
 
-<!-- 	<test name="Run on CHROME HEADLESS">
-		<parameter name="browser" value="headLess_chrome" />
-		<classes>
-			<class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" />
-		</classes>
-	</test>
-
-	<test name="Run on FIREFOX HEADLESS">
-		<parameter name="browser" value="headLess_firefox" />
-		<classes>
-			<class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" />
-		</classes>
-	</test> -->
+	<!-- <test name="Run on CHROME HEADLESS"> <parameter name="browser" value="headLess_chrome" /> <classes> <class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" /> </classes> 
+		</test> <test name="Run on FIREFOX HEADLESS"> <parameter name="browser" value="headLess_firefox" /> <classes> <class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" /> </classes> 
+		</test> -->
 
 </suite>

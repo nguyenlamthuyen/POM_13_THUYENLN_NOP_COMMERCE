@@ -118,6 +118,16 @@ public abstract class AbstractPages {
 			e.printStackTrace();
 		}
 	}
+	
+	public void sendKeyToElement(WebDriver driver, String locator, String valueToSendkey, String... values) {
+		findElementByXpath(driver, locator, values).clear();
+		findElementByXpath(driver, locator, values).sendKeys(valueToSendkey);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void sleepInSecond(long timeout) {
 		try {
@@ -137,6 +147,10 @@ public abstract class AbstractPages {
 
 	public String getTextElement(WebDriver driver, String locator) {
 		return findElementByXpath(driver, locator).getText();
+	}
+	
+	public String getTextElement(WebDriver driver, String locator, String... values) {
+		return findElementByXpath(driver, locator, values).getText();
 	}
 
 	public int countElementNumber(WebDriver driver, String locator) {
@@ -184,7 +198,7 @@ public abstract class AbstractPages {
 		waitExplicit.until(ExpectedConditions.elementToBeClickable(byXpath));
 	}
 
-	public void waitToElementClickable(WebDriver driver, String locator, String values) {
+	public void waitToElementClickable(WebDriver driver, String locator, String... values) {
 		byXpath = byXpathLocator(locator, values);
 		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		waitExplicit.until(ExpectedConditions.elementToBeClickable(byXpath));

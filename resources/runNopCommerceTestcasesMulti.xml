@@ -3,14 +3,17 @@
 
 	<listeners>
 		<listener class-name="commons.MethodListener" />
+		<!-- <listener class-name="reportConfig.ExtentTestListenerVersion2" /> -->
+		<!-- <listener class-name="reportConfig.ExtentTestListenerVersion3" /> -->
+		<listener class-name="reportConfig.ExtendTestListenerVersion4" />
 	</listeners>
 
 	<!-- <test name="Run on CHROME"> <parameter name="browser" value="chrome" /> <classes> <class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" /> </classes> </test> -->
 
-	<test name="Run on FIREFOX">
-		<parameter name="browser" value="firefox" />
+	<test name="Run on CHROME">
+		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="nop.commerce.login.Login_10_RegisterAndLogin_Assert_Verify_Log_Report" />
+			<class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" />
 		</classes>
 	</test>
 

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Nop Commerce" parallel="false">
 
+	<!-- Lobal data for suite -->
+	<!-- <parameter name="browser" value="firefox" /> -->
+
 	<listeners>
 		<listener class-name="commons.MethodListener" />
 		<!-- <listener class-name="reportConfig.ExtentTestListenerVersion2" /> -->
@@ -10,10 +13,15 @@
 
 	<!-- <test name="Run on CHROME"> <parameter name="browser" value="chrome" /> <classes> <class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" /> </classes> </test> -->
 
-	<test name="Run on CHROME">
-		<parameter name="browser" value="chrome" />
+	<test name="Run on FIREFOX">
+		<parameter name="browser" value="firefox" />
 		<classes>
-			<class name="nop.commerce.login.Login_06_RegisterAndLogin_Multi_Browser_Parallel" />
+
+			<!-- Run testcase -->
+			<class name="nop.commerce.login.Login_11_Register_ShareClassState" />
+			<!-- Run first: Pre-condition for class test -->
+			<class name="com.nopcommerce.common.Common_01_RegisterToSystem" />
+			<class name="com.nopcommerce.common.Common_02_LoginToSystem" />
 		</classes>
 	</test>
 

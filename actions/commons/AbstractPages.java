@@ -95,7 +95,7 @@ public abstract class AbstractPages {
 
 	public By byXpathLocator(String locator, String... values) {
 		locator = String.format(locator, (Object[]) values);
-//		return byXpath = By.xpath(locator);
+		System.out.println(locator);
 		return By.xpath(locator);
 	}
 
@@ -139,6 +139,12 @@ public abstract class AbstractPages {
 
 	public void selectItemInDropdown(WebDriver driver, String locator, String valueItem) {
 		element = findElementByXpath(driver, locator);
+		select = new Select(element);
+		select.selectByVisibleText(valueItem);
+	}
+
+	public void selectItemInDropdown(WebDriver driver, String locator, String valueItem, String... values) {
+		element = findElementByXpath(driver, locator, values);
 		select = new Select(element);
 		select.selectByVisibleText(valueItem);
 	}
@@ -189,9 +195,27 @@ public abstract class AbstractPages {
 		}
 	}
 
+	public boolean isElementSelected(WebDriver driver, String locator, String... values) {
+		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+		try {
+			element = findElementByXpath(driver, locator, values);
+			overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+			return element.isSelected();
+		} catch (Exception ex) {
+			overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+			return false;
+		}
+	}
+
 	public void hoverMouseToElement(WebDriver driver, String locator) {
 		action = new Actions(driver);
 		element = findElementByXpath(driver, locator);
+		action.moveToElement(element).perform();
+	}
+
+	public void hoverMouseToElement(WebDriver driver, String locator, String... values) {
+		action = new Actions(driver);
+		element = findElementByXpath(driver, locator, values);
 		action.moveToElement(element).perform();
 	}
 
@@ -272,7 +296,7 @@ public abstract class AbstractPages {
 		System.out.println("Start time = " + date.toString());
 		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
 
-		locator = String.format(locator, (Object[]) values );
+		locator = String.format(locator, (Object[]) values);
 		List<WebElement> elements = driver.findElements(By.xpath(locator));
 
 		if (elements.size() == 0) {
@@ -338,6 +362,55 @@ public abstract class AbstractPages {
 	public void openFooterPagesByName(WebDriver driver, String pageName) {
 		waitToElementClickable(driver, AbstractPageUI.DYNAMIC_FOOTER_LINK, pageName);
 		clickToElement(driver, AbstractPageUI.DYNAMIC_FOOTER_LINK, pageName);
+	}
+
+	public void openHeaderPageByName(WebDriver driver, String pageName) {
+		waitToElementClickable(driver, AbstractPageUI.DYNAMIC_HEADER_LINK, pageName);
+		clickToElement(driver, AbstractPageUI.DYNAMIC_HEADER_LINK, pageName);
+	}
+
+	public void openHeaderMenuPageByName(WebDriver driver, String pageName) {
+		waitToElementClickable(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK, pageName);
+		clickToElement(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK, pageName);
+	}
+
+	public void openHeaderSubMenuPageByName(WebDriver driver, String pageMenuName, String subMenuName) {
+		waitToElementClickable(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK, pageMenuName);
+		hoverMouseToElement(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK, pageMenuName);
+		waitToElementClickable(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK, subMenuName);
+		clickToElement(driver, AbstractPageUI.DYNAMIC_HEADER_MENU_LINK, subMenuName);
+	}
+
+	public void inputToTextboxByID(WebDriver driver, String textboxID, String value) {
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_TEXTBOX, textboxID);
+		sendKeyToElement(driver, AbstractPageUI.DYNAMIC_TEXTBOX, value, textboxID);
+	}
+
+	public void clickToRadioButtonByID(WebDriver driver, String radioBtnID) {
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_TEXTBOX, radioBtnID);
+		clickToElement(driver, AbstractPageUI.DYNAMIC_TEXTBOX, radioBtnID);
+	}
+
+	public void selectDropdownByName(WebDriver driver, String dropdownName, String value) {
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_DROPDOWN, dropdownName);
+		selectItemInDropdown(driver, AbstractPageUI.DYNAMIC_DROPDOWN, value, dropdownName);
+	}
+
+	// status = true(click = check)/false (uncheck)
+	public void clickToCheckboxByID(WebDriver driver, String checkboxID, boolean status) {
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_CHECKBOX, checkboxID);
+		
+		// Chọn rồi = true/ Chưa chọn = false
+		boolean checkboxStatus = isElementSelected(driver, AbstractPageUI.DYNAMIC_CHECKBOX, checkboxID);
+		System.out.println("Checkbox status = " + checkboxStatus);
+		if (checkboxStatus == status) {
+			clickToElement(driver, AbstractPageUI.DYNAMIC_CHECKBOX, checkboxID);
+		}
+	}
+	
+	public void clickToButtonByValue(WebDriver driver, String buttonValue) {
+		waitToElementVisible(driver, AbstractPageUI.DYNAMIC_BUTTON, buttonValue);
+		clickToElement(driver, AbstractPageUI.DYNAMIC_BUTTON, buttonValue);
 	}
 
 }

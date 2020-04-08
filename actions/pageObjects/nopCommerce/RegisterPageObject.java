@@ -63,6 +63,7 @@ public class RegisterPageObject extends AbstractPages {
 		clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
 	}
 
+	// Đây là 1 field dành riêng cho Register Page
 	public String getRegisterSuccessMessage() {
 		waitToElementVisible(driver, RegisterPageUI.REGISTER_SUCCESS_TEXT);
 		return getTextElement(driver, RegisterPageUI.REGISTER_SUCCESS_TEXT);
